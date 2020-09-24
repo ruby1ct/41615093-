@@ -1,0 +1,67 @@
+#include <Servo.h>
+
+ 
+
+int POS = 0;
+
+ 
+
+int unnamed = 0;
+
+ 
+
+Servo servo_3;
+
+ 
+
+void setup()
+
+{
+
+  pinMode(4, INPUT);
+
+  pinMode(3, OUTPUT);
+
+  servo_3.attach(3);
+
+ 
+
+}
+
+ 
+
+void loop()
+
+{
+
+  if (digitalRead(4) == HIGH) {
+
+    digitalWrite(3, HIGH);
+
+    for (POS = 30; POS <= 149; POS += 1) {
+
+      servo_3.write(POS);
+
+      delay(15); // Wait for 15 millisecond(s)
+
+    }
+
+    delay(2000); // Wait for 2000 millisecond(s)
+
+    for (POS = 150; POS >= 29; POS -= 1) {
+
+      servo_3.write(POS);
+
+      delay(15); // Wait for 15 millisecond(s)
+
+    }
+
+    delay(2000); // Wait for 2000 millisecond(s)
+
+  } else {
+
+    digitalWrite(3, LOW);
+
+  }
+
+}
