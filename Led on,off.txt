@@ -1,0 +1,52 @@
+ //Led.h 헤더파일
+#ifndef LED_H
+#define LED_H
+#include<arduino.h>
+class Led
+
+{
+  private:
+  int LedPin;
+  public:
+  Led(int Pin){
+    LedPin = Pin;
+    pinMode(LedPin,OUTPUT);
+    
+  }
+  ~Led(){
+}
+public:
+void LedHigh();
+void LedLow();
+};
+#endif 
+//---------------------------------------------
+//Led.h cpp파일
+#include<Arduino.h>
+#include<Led.h>
+
+void Led::LedHigh(){
+  digitalWrite(LedPin,HIGH);
+}
+void Led::LedLow(){
+  digitalWrite(LedPin,LOW);
+}
+//-------------------------------------
+// 실행 아두이노 코드
+#include<Led.h>
+
+
+Led led(13);
+
+void setup()
+{
+  
+}
+
+void loop()
+{
+  led.LedHigh();
+  delay(1000);
+  led.LedLow();
+  delay(1000);
+}
